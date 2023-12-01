@@ -10,6 +10,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://jitpack.io")
     }
 }
 
@@ -18,3 +19,4 @@ include(":app")
 include(":network")
 include(":domain")
 include(":usecases")
+include(":data")

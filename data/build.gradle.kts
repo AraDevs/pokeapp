@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.aradevs.pokeapp.usecases"
+    namespace = "com.aradevs.pokeapp.data"
     compileSdk = 34
 
     defaultConfig {
@@ -48,8 +48,4 @@ dependencies {
 
     //modules
     implementation(project(":domain"))
-    implementation(project(":data"))
-
-    //paging
-    implementation("androidx.paging:paging-common-ktx:3.2.1")
 }
