@@ -45,4 +45,7 @@ dependencies {
     //dependency injection
     implementation("com.google.dagger:hilt-android:2.45")
     kapt("com.google.dagger:hilt-compiler:2.45")
+
+    //paging
+    implementation("androidx.paging:paging-common-ktx:3.2.1")
 }
