@@ -9,4 +9,6 @@ class PokemonRepository(private val pokemonRemoteDataSource: PokemonRemoteDataSo
         pokemonRemoteDataSource.getPokemon(offset, limit)
 
     fun getPokemonDetail(id: Int) = pokemonRemoteDataSource.getPokemonDetail(id)
+
+    fun getPokemonSpecies(id: Int) = pokemonRemoteDataSource.getPokemonSpecies(id)
 }

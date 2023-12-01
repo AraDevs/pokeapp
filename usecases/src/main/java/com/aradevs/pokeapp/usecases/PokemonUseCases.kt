@@ -54,3 +54,7 @@ class FetchPokemonUseCase(
 class GetPokemonDetailUseCase(private val pokemonRepository: PokemonRepository) {
     operator fun invoke(id: Int) = pokemonRepository.getPokemonDetail(id)
 }
+
+class GetPokemonSpeciesUseCase(private val pokemonRepository: PokemonRepository) {
+    operator fun invoke(id: Int) = pokemonRepository.getPokemonSpecies(id)
+}

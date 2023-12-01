@@ -2,6 +2,8 @@ package com.aradevs.pokeapp.usecases.di
 
 import com.aradevs.pokeapp.data.repository.PokemonRepository
 import com.aradevs.pokeapp.usecases.FetchPokemonUseCase
+import com.aradevs.pokeapp.usecases.GetPokemonDetailUseCase
+import com.aradevs.pokeapp.usecases.GetPokemonSpeciesUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +18,9 @@ class PokemonUseCasesModule {
 
     @Provides
     fun providesGetPokemonDetailUseCase(repository: PokemonRepository) =
-        FetchPokemonUseCase(repository)
+        GetPokemonDetailUseCase(repository)
+
+    @Provides
+    fun providesGetPokemonSpeciesUseCase(repository: PokemonRepository) =
+        GetPokemonSpeciesUseCase(repository)
 }
