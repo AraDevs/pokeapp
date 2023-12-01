@@ -1,6 +1,6 @@
 package com.aradevs.pokeapp.data.data_source
 
-import com.aradevs.pokeapp.domain.pokemon.PokemonList
+import com.aradevs.pokeapp.domain.pokemon.list.PokemonList
 import com.aradevs.pokeapp.domain.Status
 
 interface PokemonRemoteDataSource {

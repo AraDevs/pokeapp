@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.aradevs.pokeapp.data.repository.PokemonRepository
 import com.aradevs.pokeapp.domain.Status
-import com.aradevs.pokeapp.domain.pokemon.Pokemon
+import com.aradevs.pokeapp.domain.pokemon.list.Pokemon
 import com.aradevs.pokeapp.usecases.utils.FIRST_GEN_POKEMON_COUNT
 import com.aradevs.pokeapp.usecases.utils.POKEMON_PER_PAGE
 import com.aradevs.pokeapp.usecases.utils.limitFirstGenPokemon

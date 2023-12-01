@@ -1,7 +1,7 @@
 package com.aradevs.pokeapp.usecases.utils
 
 import android.util.Log
-import com.aradevs.pokeapp.domain.pokemon.Pokemon
+import com.aradevs.pokeapp.domain.pokemon.list.Pokemon
 import java.lang.NumberFormatException
 
 const val POKEMON_URL_ID_OFFSET = 2

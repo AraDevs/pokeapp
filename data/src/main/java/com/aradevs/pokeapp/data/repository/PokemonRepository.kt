@@ -1,7 +1,7 @@
 package com.aradevs.pokeapp.data.repository
 
 import com.aradevs.pokeapp.data.data_source.PokemonRemoteDataSource
-import com.aradevs.pokeapp.domain.pokemon.PokemonList
+import com.aradevs.pokeapp.domain.pokemon.list.PokemonList
 import com.aradevs.pokeapp.domain.Status
 
 class PokemonRepository(private val pokemonRemoteDataSource: PokemonRemoteDataSource) {

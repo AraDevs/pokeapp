@@ -1,6 +1,9 @@
 package com.aradevs.pokeapp.network.di
 
 import com.aradevs.pokeapp.network.BaseRequest
+import com.aradevs.pokeapp.network.PokemonStatNameAdapter
+import com.aradevs.pokeapp.network.PokemonStatSerializer
+import com.aradevs.pokeapp.network.PokemonTypeNameAdapter
 import com.aradevs.pokeapp.network.pokemon.PokemonApi
 import dagger.Module
 import dagger.Provides
@@ -21,7 +24,10 @@ class ApiModule {
 
         return BaseRequest<PokemonApi>(
             baseUrl = moduleBaseUrl,
-            adapters = listOf(),
+            adapters = listOf(
+                PokemonTypeNameAdapter,
+                PokemonStatNameAdapter
+            ),
             interceptors = listOf(
                 loggingInterceptor,
             ),
