@@ -55,4 +55,11 @@ dependencies {
     implementation("com.squareup.moshi:moshi:1.14.0")
     implementation("com.squareup.moshi:moshi-adapters:1.14.0")
     ksp("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
+
+    //null safety
+    implementation("com.github.aradevs:safe:1.0.2")
+
+    //modules
+    implementation(project(":domain"))
+    implementation(project(":data"))
 }
