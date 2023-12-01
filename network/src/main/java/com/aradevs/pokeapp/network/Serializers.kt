@@ -77,4 +77,20 @@ data class PokemonTypeDetailSerializer(
 
 //endregion
 
+//region Pokemon Species
+data class PokemonSpeciesTextLanguageSerializer(
+    val name: String?,
+)
+
+data class PokemonSpeciesFlavorTextEntrySerializer(
+    val flavorText: String?,
+    val language: PokemonSpeciesTextLanguageSerializer,
+)
+
+data class PokemonSpeciesSerializer(
+    val id: String?,
+    val flavorTextEntries: List<PokemonSpeciesFlavorTextEntrySerializer>?,
+)
+//endregion
+
 
