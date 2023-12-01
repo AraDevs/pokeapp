@@ -7,4 +7,6 @@ import com.aradevs.pokeapp.domain.Status
 class PokemonRepository(private val pokemonRemoteDataSource: PokemonRemoteDataSource) {
     suspend fun getPokemon(offset: Int = 0, limit: Int = 10): Status<PokemonList> =
         pokemonRemoteDataSource.getPokemon(offset, limit)
+
+    fun getPokemonDetail(id: Int) = pokemonRemoteDataSource.getPokemonDetail(id)
 }

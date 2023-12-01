@@ -13,4 +13,8 @@ class PokemonUseCasesModule {
     @Provides
     fun providesGetPokemonListUseCase(repository: PokemonRepository) =
         FetchPokemonUseCase(repository)
+
+    @Provides
+    fun providesGetPokemonDetailUseCase(repository: PokemonRepository) =
+        FetchPokemonUseCase(repository)
 }
