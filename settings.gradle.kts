@@ -15,3 +15,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "pokeapp"
 include(":app")
+include(":network")
+include(":domain")
+include(":usecases")
