@@ -72,6 +72,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    implementation("androidx.compose.material3:material3-window-size-class:1.1.2")
+
     //modules
     implementation(project(":domain"))
 

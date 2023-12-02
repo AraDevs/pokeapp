@@ -1,4 +1,4 @@
-package com.aradevs.pokeapp.ui.home
+package com.aradevs.pokeapp.ui.home.commons
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.border
@@ -32,6 +32,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.aradevs.pokeapp.R
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
 import com.aradevs.pokeapp.ui.theme.borderGray
@@ -49,10 +50,10 @@ fun PokemonSearchBar(
         mutableStateOf(TextFieldValue(""))
     }
 
-    Card(modifier = modifier, shape = RoundedCornerShape(10.dp)) {
+    Card(modifier = modifier, shape = RoundedCornerShape(30.dp)) {
         Row(
             modifier = Modifier
-                .padding(4.dp)
+                .padding(horizontal = 5.dp)
                 .fillMaxSize(),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -75,14 +76,16 @@ fun PokemonSearchBar(
                 ),
                 decorationBox = { innerTextField ->
                     if (text.text.isEmpty()) {
-                        Text(hint, color = MaterialTheme.colorScheme.onSurface)
+                        Text(hint, color = MaterialTheme.colorScheme.onSurface, fontSize = 12.sp)
                     }
                     // <-- Add this
                     innerTextField()
                 }
             )
             Button(
-                modifier = Modifier.size(27.dp),
+                modifier = Modifier
+                    .padding(vertical = 5.dp)
+                    .size(27.dp),
                 shape = CircleShape,
                 onClick = {
                     onSearch(text.text)
@@ -109,7 +112,7 @@ fun PokemonSearchBarPreview() {
     PokeappTheme {
         PokemonSearchBar(
             modifier = Modifier
-                .border(1.dp, borderGray, RoundedCornerShape(10.dp))
+                .border(1.dp, borderGray, RoundedCornerShape(30.dp))
                 .fillMaxWidth()
                 .height(36.dp)
         )

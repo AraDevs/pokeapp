@@ -1,50 +1,36 @@
 package com.aradevs.pokeapp
 
-import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.aradevs.pokeapp.ui.home.HomeScreen
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val windowSizeClass = calculateWindowSizeClass(activity = this)
             PokeappTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
+                Scaffold {
+                    HomeScreen(
+                        modifier = Modifier.padding(
+                            start = 15.dp,
+                            end = 15.dp,
+                            bottom = it.calculateBottomPadding(),
+                            top = 15.dp
+                        ),
+                        windowSizeClass = windowSizeClass
+                    )
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        color = MaterialTheme.colorScheme.onBackground,
-        modifier = modifier
-    )
-}
-
-@Preview(uiMode = UI_MODE_NIGHT_NO)
-@Composable
-fun GreetingPreview() {
-    PokeappTheme {
-        Surface(color= MaterialTheme.colorScheme.surface) {
-            Greeting(name = "Android")
         }
     }
 }
