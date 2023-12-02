@@ -86,6 +86,9 @@ dependencies {
     //image loading
     implementation("io.coil-kt:coil-compose:2.5.0")
 
+    //lottie animations
+    implementation("com.airbnb.android:lottie-compose:5.2.0")
+
     //paging
     implementation("androidx.paging:paging-runtime-ktx:3.2.1")
     implementation("androidx.paging:paging-compose:3.3.0-alpha02")

@@ -22,9 +22,13 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.paging.LoadState
 import com.aradevs.pokeapp.MockPokemonActions
 import com.aradevs.pokeapp.PokemonActions
+import com.aradevs.pokeapp.ui.home.commons.ErrorContainer
+import com.aradevs.pokeapp.ui.home.commons.Loader
 import com.aradevs.pokeapp.ui.home.commons.PokemonAppBar
+import com.aradevs.pokeapp.ui.home.commons.PokemonListErrorHandler
 import com.aradevs.pokeapp.ui.home.commons.PokemonSearchBar
 import com.aradevs.pokeapp.ui.theme.AppFont
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
@@ -32,6 +36,7 @@ import com.aradevs.pokeapp.ui.theme.borderGray
 
 @Composable
 fun HomeScreenCompact(modifier: Modifier = Modifier, pokemonActions: PokemonActions) {
+    val pokemonPager = pokemonActions.getPokemonList()
     val annotatedString = buildAnnotatedString {
         append("¡Hola,")
         withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {

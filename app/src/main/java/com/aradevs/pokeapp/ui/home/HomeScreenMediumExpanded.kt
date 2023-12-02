@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import com.aradevs.pokeapp.MockPokemonActions
 import com.aradevs.pokeapp.PokemonActions
 import com.aradevs.pokeapp.ui.home.commons.PokemonAppBar
+import com.aradevs.pokeapp.ui.home.commons.PokemonListErrorHandler
 import com.aradevs.pokeapp.ui.home.commons.PokemonSearchBar
 import com.aradevs.pokeapp.ui.theme.AppFont
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
@@ -73,7 +74,7 @@ fun HomeScreenMediumExpanded(
             )
         }
         Spacer(modifier = Modifier.width(30.dp))
-        HomeScreenPokemonList(modifier = Modifier.weight(0.65f),pokemonActions = pokemonActions)
+        HomeScreenPokemonList(modifier = Modifier.weight(0.65f), pokemonActions = pokemonActions)
     }
 }
 
