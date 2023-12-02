@@ -33,6 +33,7 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
+        color = MaterialTheme.colorScheme.onBackground,
         modifier = modifier
     )
 }
