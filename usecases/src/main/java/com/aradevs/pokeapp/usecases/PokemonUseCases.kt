@@ -13,7 +13,7 @@ import com.aradevs.pokeapp.usecases.utils.setIdAndImage
 class FetchPokemonUseCase(
     private val pokemonRepository: PokemonRepository
 ) {
-    suspend operator fun invoke() = object : PagingSource<Int, Pokemon>() {
+    operator fun invoke() = object : PagingSource<Int, Pokemon>() {
 
         override fun getRefreshKey(state: PagingState<Int, Pokemon>): Int? {
             return state.anchorPosition?.let { anchorPosition ->
@@ -26,7 +26,6 @@ class FetchPokemonUseCase(
 
         override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Pokemon> {
             return try {
-                val nextPageNumber = params.key ?: POKEMON_PER_PAGE
                 val nextPage = params.key ?: 0
 
                 return when (val result =
@@ -36,10 +35,10 @@ class FetchPokemonUseCase(
                         data = result.data.results
                             .limitFirstGenPokemon()
                             .setIdAndImage(),
-                        prevKey = if (nextPageNumber == 0) null else nextPageNumber.minus(
+                        prevKey = if (nextPage <= 0) null else nextPage.minus(
                             POKEMON_PER_PAGE
                         ),
-                        nextKey = if (nextPageNumber < FIRST_GEN_POKEMON_COUNT) nextPageNumber.plus(
+                        nextKey = if (nextPage < FIRST_GEN_POKEMON_COUNT) nextPage.plus(
                             POKEMON_PER_PAGE
                         ) else null
                     )

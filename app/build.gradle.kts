@@ -77,6 +77,7 @@ dependencies {
 
     //modules
     implementation(project(":domain"))
+    implementation(project(":usecases"))
 
     //dependency injection
     implementation("com.google.dagger:hilt-android:2.45")

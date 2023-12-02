@@ -49,6 +49,7 @@ dependencies {
     //modules
     implementation(project(":domain"))
     implementation(project(":data"))
+    implementation(project(":network"))
 
     //paging
     implementation("androidx.paging:paging-common-ktx:3.2.1")
