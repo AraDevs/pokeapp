@@ -72,7 +72,13 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    //modules
+    implementation(project(":domain"))
+
     //dependency injection
     implementation("com.google.dagger:hilt-android:2.45")
     kapt("com.google.dagger:hilt-compiler:2.45")
+
+    //image loading
+    implementation("io.coil-kt:coil-compose:2.5.0")
 }

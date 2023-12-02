@@ -8,6 +8,7 @@ import com.aradevs.pokeapp.domain.pokemon.list.Pokemon
 import com.aradevs.pokeapp.usecases.utils.FIRST_GEN_POKEMON_COUNT
 import com.aradevs.pokeapp.usecases.utils.POKEMON_PER_PAGE
 import com.aradevs.pokeapp.usecases.utils.limitFirstGenPokemon
+import com.aradevs.pokeapp.usecases.utils.setIdAndImage
 
 class FetchPokemonUseCase(
     private val pokemonRepository: PokemonRepository
@@ -32,7 +33,9 @@ class FetchPokemonUseCase(
                     pokemonRepository.getPokemon(offset = nextPage, limit = POKEMON_PER_PAGE)) {
 
                     is Status.Success -> LoadResult.Page(
-                        data = result.data.results.limitFirstGenPokemon(),
+                        data = result.data.results
+                            .limitFirstGenPokemon()
+                            .setIdAndImage(),
                         prevKey = if (nextPageNumber == 0) null else nextPageNumber.minus(
                             POKEMON_PER_PAGE
                         ),

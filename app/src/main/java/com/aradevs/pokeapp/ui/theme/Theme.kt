@@ -20,7 +20,7 @@ private val darkColorScheme = darkColorScheme(
     onSecondary = blackDarkTheme,
     background = mainSurfaceDarkTheme,
     onBackground = mainTextDarkTheme,
-    surface = cardSurfaceDarkTheme,
+    surfaceVariant = cardSurfaceDarkTheme,
     onSurface = secondaryTextDarkTheme,
     inverseOnSurface = darkGrayDarkTheme,
     error = Color.Red,
@@ -36,12 +36,10 @@ private val lightColorScheme = lightColorScheme(
     onSecondary = black,
     background = mainSurface,
     onBackground = mainText,
-    surface = cardSurface,
+    surfaceVariant = cardSurface,
     onSurface = secondaryText,
     inverseOnSurface = darkGray,
     error = Color.Red,
-
-
     onError = Color.White,
     /* Other default colors to override
     background = Color(0xFFFFFBFE),

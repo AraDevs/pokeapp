@@ -1,5 +1,6 @@
 package com.aradevs.pokeapp
 
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -38,10 +39,12 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(showBackground = true)
+@Preview(uiMode = UI_MODE_NIGHT_NO)
 @Composable
 fun GreetingPreview() {
     PokeappTheme {
-        Greeting("Android")
+        Surface(color= MaterialTheme.colorScheme.surface) {
+            Greeting(name = "Android")
+        }
     }
 }
