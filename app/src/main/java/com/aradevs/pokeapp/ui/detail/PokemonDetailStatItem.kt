@@ -1,5 +1,8 @@
 package com.aradevs.pokeapp.ui.detail
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutLinearInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -8,6 +11,8 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,6 +39,18 @@ fun PokemonDetailStatItem(
     palette: Palette? = null,
     pokemonStat: PokemonStat
 ) {
+    val percent = remember(MAX_POKEMON_EV) { Animatable(0F) }
+
+    LaunchedEffect(pokemonStat.effort, MAX_POKEMON_EV) {
+        percent.animateTo(
+            targetValue = pokemonStat.effort.toFloat() / MAX_POKEMON_EV,
+            animationSpec = tween(
+                durationMillis = (1000 * (1f - percent.value)).toInt(),
+                easing = FastOutLinearInEasing
+            )
+        )
+    }
+
     Row(modifier, verticalAlignment = Alignment.CenterVertically) {
         Text(
             modifier = Modifier.weight(0.4F),
@@ -48,7 +65,7 @@ fun PokemonDetailStatItem(
             modifier = Modifier
                 .weight(0.5F)
                 .height(14.dp),
-            progress = pokemonStat.effort.toFloat() / MAX_POKEMON_EV,
+            progress = percent.value,
             strokeCap = StrokeCap.Round,
             color = palette?.vibrantSwatch?.let { Color(it.rgb) }
                 ?: MaterialTheme.colorScheme.onPrimary,
