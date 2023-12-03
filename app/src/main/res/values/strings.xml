@@ -10,7 +10,7 @@
     <string name="search_a_pokemon">Buscar un Pokémon</string>
     <string name="we_could_not_find_any_pokemon">No pudimos encontrar ningún Pokémon</string>
     <string name="search_result">Resultados de la búsqueda</string>
-    <string name="greetings_part_1">!Hola,</string>
+    <string name="greetings_part_1">¡Hola,</string>
     <string name="greetings_part_2">bienvenido!</string>
 
     <!-- Pokemon stats-->
