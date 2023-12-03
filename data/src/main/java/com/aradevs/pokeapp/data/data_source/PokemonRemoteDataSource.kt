@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 interface PokemonRemoteDataSource {
     suspend fun getPokemon(offset: Int = 0, limit: Int = 10): Status<PokemonList>
 
-    fun getPokemonDetail(id: Int): Flow<Status<PokemonDetail>>
+    fun getPokemonDetail(identifier: String): Flow<Status<PokemonDetail>>
 
     fun getPokemonSpecies(id: Int): Flow<Status<PokemonSpecies>>
 }

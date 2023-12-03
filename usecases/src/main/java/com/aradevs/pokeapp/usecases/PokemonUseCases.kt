@@ -5,14 +5,15 @@ import androidx.paging.PagingState
 import com.aradevs.pokeapp.data.repository.PokemonRepository
 import com.aradevs.pokeapp.domain.Status
 import com.aradevs.pokeapp.domain.pokemon.list.Pokemon
-import com.aradevs.pokeapp.usecases.utils.FIRST_GEN_POKEMON_COUNT
-import com.aradevs.pokeapp.usecases.utils.POKEMON_PER_PAGE
-import com.aradevs.pokeapp.usecases.utils.limitFirstGenPokemon
+import com.aradevs.pokeapp.domain.FIRST_GEN_POKEMON_COUNT
+import com.aradevs.pokeapp.domain.POKEMON_PER_PAGE
+import com.aradevs.pokeapp.domain.limitFirstGenPokemon
+import com.aradevs.pokeapp.domain.setIdAndImage
 
 class FetchPokemonUseCase(
     private val pokemonRepository: PokemonRepository
 ) {
-    suspend operator fun invoke() = object : PagingSource<Int, Pokemon>() {
+    operator fun invoke() = object : PagingSource<Int, Pokemon>() {
 
         override fun getRefreshKey(state: PagingState<Int, Pokemon>): Int? {
             return state.anchorPosition?.let { anchorPosition ->
@@ -25,18 +26,19 @@ class FetchPokemonUseCase(
 
         override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Pokemon> {
             return try {
-                val nextPageNumber = params.key ?: POKEMON_PER_PAGE
                 val nextPage = params.key ?: 0
 
                 return when (val result =
                     pokemonRepository.getPokemon(offset = nextPage, limit = POKEMON_PER_PAGE)) {
 
                     is Status.Success -> LoadResult.Page(
-                        data = result.data.results.limitFirstGenPokemon(),
-                        prevKey = if (nextPageNumber == 0) null else nextPageNumber.minus(
+                        data = result.data.results
+                            .limitFirstGenPokemon()
+                            .setIdAndImage(),
+                        prevKey = if (nextPage <= 0) null else nextPage.minus(
                             POKEMON_PER_PAGE
                         ),
-                        nextKey = if (nextPageNumber < FIRST_GEN_POKEMON_COUNT) nextPageNumber.plus(
+                        nextKey = if (nextPage < FIRST_GEN_POKEMON_COUNT) nextPage.plus(
                             POKEMON_PER_PAGE
                         ) else null
                     )
@@ -52,7 +54,7 @@ class FetchPokemonUseCase(
 }
 
 class GetPokemonDetailUseCase(private val pokemonRepository: PokemonRepository) {
-    operator fun invoke(id: Int) = pokemonRepository.getPokemonDetail(id)
+    operator fun invoke(identifier: String) = pokemonRepository.getPokemonDetail(identifier)
 }
 
 class GetPokemonSpeciesUseCase(private val pokemonRepository: PokemonRepository) {

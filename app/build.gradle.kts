@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -72,7 +73,23 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    implementation("androidx.compose.material3:material3-window-size-class:1.1.2")
+
+    //modules
+    implementation(project(":domain"))
+    implementation(project(":usecases"))
+
     //dependency injection
     implementation("com.google.dagger:hilt-android:2.45")
     kapt("com.google.dagger:hilt-compiler:2.45")
+
+    //image loading
+    implementation("io.coil-kt:coil-compose:2.5.0")
+
+    //lottie animations
+    implementation("com.airbnb.android:lottie-compose:5.2.0")
+
+    //paging
+    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
+    implementation("androidx.paging:paging-compose:3.3.0-alpha02")
 }

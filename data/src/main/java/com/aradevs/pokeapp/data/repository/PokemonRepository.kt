@@ -8,7 +8,7 @@ class PokemonRepository(private val pokemonRemoteDataSource: PokemonRemoteDataSo
     suspend fun getPokemon(offset: Int = 0, limit: Int = 10): Status<PokemonList> =
         pokemonRemoteDataSource.getPokemon(offset, limit)
 
-    fun getPokemonDetail(id: Int) = pokemonRemoteDataSource.getPokemonDetail(id)
+    fun getPokemonDetail(identifier: String) = pokemonRemoteDataSource.getPokemonDetail(identifier)
 
     fun getPokemonSpecies(id: Int) = pokemonRemoteDataSource.getPokemonSpecies(id)
 }

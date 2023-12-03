@@ -3,44 +3,61 @@ package com.aradevs.pokeapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.activity.viewModels
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
+import com.aradevs.pokeapp.domain.pokemon.list.Pokemon
+import com.aradevs.pokeapp.ui.home.HomeScreen
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : ComponentActivity() {
+@AndroidEntryPoint
+class MainActivity : ComponentActivity(), PokemonActions {
+    private val _viewModel: MainActivityViewModel by viewModels()
+
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val windowSizeClass = calculateWindowSizeClass(activity = this)
             PokeappTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
+                Scaffold {
+                    HomeScreen(
+                        modifier = Modifier.padding(
+                            start = 15.dp,
+                            end = 15.dp,
+                            bottom = it.calculateBottomPadding(),
+                            top = 15.dp
+                        ),
+                        windowSizeClass = windowSizeClass,
+                        pokemonActions = this@MainActivity
+                    )
                 }
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    @Composable
+    override fun getPokemonList(): LazyPagingItems<Pokemon> =
+        _viewModel.pokemonList.collectAsLazyPagingItems()
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    PokeappTheme {
-        Greeting("Android")
+    override fun getCurrentPokemonDetail() = _viewModel.currentPokemonDetail
+
+    override fun getPokemonDetail(identifier: String) {
+        _viewModel.getPokemonDetail(identifier)
+    }
+
+    override fun getFilterValue(): MutableState<String> = _viewModel.currentFilterValue
+
+    override fun updateFilterValue(newValue: String) {
+        _viewModel.updateFilterValue(newValue)
     }
 }
