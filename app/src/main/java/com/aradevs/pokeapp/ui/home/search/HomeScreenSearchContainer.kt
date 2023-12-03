@@ -8,7 +8,6 @@ import androidx.compose.ui.Modifier
 import com.aradevs.pokeapp.PokemonActions
 import com.aradevs.pokeapp.domain.PokemonNotFoundException
 import com.aradevs.pokeapp.domain.Status
-import com.aradevs.pokeapp.domain.pokemon.detail.PokemonDetail
 import com.aradevs.pokeapp.ui.home.commons.ErrorContainer
 import com.aradevs.pokeapp.ui.home.commons.Loader
 
@@ -19,7 +18,7 @@ fun HomeScreenSearchContainer(modifier: Modifier = Modifier, pokemonActions: Pok
         when (val status = currentPokemonDetail.value) {
             is Status.Loading -> Loader(modifier = Modifier.align(Alignment.Center))
 
-            is Status.Success -> HomeScreenSearchResultSuccess(pokemonDetail = (currentPokemonDetail.value as Status.Success<PokemonDetail>).data)
+            is Status.Success -> HomeScreenSearchResultSuccess(pokemonDetail = status.data)
 
             is Status.Error -> {
                 if (status.exception is PokemonNotFoundException) {

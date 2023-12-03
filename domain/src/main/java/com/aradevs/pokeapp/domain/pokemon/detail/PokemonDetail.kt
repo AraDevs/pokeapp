@@ -1,5 +1,6 @@
 package com.aradevs.pokeapp.domain.pokemon.detail
 
+import android.util.Log
 import com.aradevs.pokeapp.domain.obtainPokemonImage
 import com.aradevs.pokeapp.domain.obtainPokemonUrl
 import com.aradevs.pokeapp.domain.pokemon.list.Pokemon
@@ -11,12 +12,15 @@ data class PokemonDetail(
     val types: List<PokemonType>
 )
 
-fun PokemonDetail.toPokemon() = Pokemon(
-    id = id.toInt(),
-    name = name,
-    image = obtainPokemonImage(id.toInt()),
-    url = obtainPokemonUrl(id.toInt())
-)
+fun PokemonDetail.toPokemon(): Pokemon {
+    Log.e("PokemonDetail", "toPokemon: $this")
+    return Pokemon(
+        id = id.toInt(),
+        name = name,
+        image = obtainPokemonImage(id.toInt()),
+        url = obtainPokemonUrl(id.toInt())
+    )
+}
 
 val mockPokemonDetail = PokemonDetail(
     id = "1",

@@ -19,7 +19,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -45,16 +44,17 @@ class MainActivityViewModel @Inject constructor(
         private set
 
     fun getPokemonDetail(identifier: String = "") {
+        if (identifier.isEmpty()) return
         viewModelScope.launch(Dispatchers.IO) {
             _currentPokemonDetail.emit(Status.Loading())
-            getPokemonDetailUseCase(identifier.lowercase()).collectLatest {
+            getPokemonDetailUseCase(identifier.lowercase()).collect {
                 _currentPokemonDetail.emit(it)
             }
         }
     }
 
     fun updateFilterValue(newValue: String) {
-        if (newValue.isBlank()) {
+        if (newValue.isBlank() || currentFilterValue.value.isBlank()) {
             viewModelScope.launch {
                 _currentPokemonDetail.emit(Status.Initial())
             }

@@ -2,6 +2,7 @@ package com.aradevs.pokeapp.network.pokemon
 
 import android.util.Log
 import com.aradevs.pokeapp.data.data_source.PokemonRemoteDataSource
+import com.aradevs.pokeapp.domain.FIRST_GEN_POKEMON_COUNT
 import com.aradevs.pokeapp.domain.PokemonNotFoundException
 import com.aradevs.pokeapp.domain.pokemon.list.PokemonList
 import com.aradevs.pokeapp.domain.Status
@@ -35,9 +36,13 @@ class PokemonRemoteDataSourceImpl(private val api: PokemonApi) : PokemonRemoteDa
             emit(Status.Loading())
             val response = api.getPokemonDetail(identifier = identifier)
             when (response.code()) {
-
                 200 -> response.body()?.let {
-                    emit(Status.Success(it.toDomain()))
+                    val pokemonDetail = it.toDomain()
+                    if (pokemonDetail.id.toInt() <= FIRST_GEN_POKEMON_COUNT) {
+                        emit(Status.Success(pokemonDetail))
+                    } else {
+                        emit(Status.Error(PokemonNotFoundException("Pokemon not found")))
+                    }
                 } ?: emit(Status.Error(Exception(NO_DATA)))
 
                 404 -> {
