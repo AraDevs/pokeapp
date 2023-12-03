@@ -24,7 +24,7 @@ import com.aradevs.pokeapp.ui.theme.PokeappTheme
 @Composable
 fun PokemonAppBar(modifier: Modifier = Modifier) {
     Row(
-        modifier = Modifier,
+        modifier = modifier,
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
     ) {

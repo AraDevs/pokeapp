@@ -1,6 +1,5 @@
 package com.aradevs.pokeapp.ui.home.search
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -13,11 +12,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.aradevs.pokeapp.R
 import com.aradevs.pokeapp.domain.pokemon.detail.PokemonDetail
 import com.aradevs.pokeapp.domain.pokemon.detail.mockPokemonDetail
 import com.aradevs.pokeapp.domain.pokemon.detail.toPokemon
@@ -36,7 +37,7 @@ fun HomeScreenSearchResultSuccess(modifier: Modifier = Modifier, pokemonDetail: 
 
     Column(modifier = modifier, horizontalAlignment = Alignment.Start) {
         Text(
-            text = "Resultado de búsqueda",
+            text = stringResource(id = R.string.search_result),
             style = TextStyle(
                 fontSize = 16.sp,
                 fontFamily = AppFont.Montserrat,

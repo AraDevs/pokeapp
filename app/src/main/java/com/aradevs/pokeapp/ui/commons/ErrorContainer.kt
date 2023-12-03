@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -36,7 +37,7 @@ fun ErrorContainer(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        if(showImage){
+        if (showImage) {
             Image(
                 painterResource(id = R.drawable.error_image),
                 contentDescription = "Error image",
@@ -44,7 +45,7 @@ fun ErrorContainer(
         }
         Spacer(modifier = Modifier.height(10.dp))
         Text(
-            "Algo salio mal", fontFamily = AppFont.Montserrat,
+            stringResource(id = R.string.something_went_wrong), fontFamily = AppFont.Montserrat,
             style = TextStyle(
                 fontSize = 15.sp,
                 fontWeight = FontWeight.W700,
@@ -60,7 +61,10 @@ fun ErrorContainer(
             contentPadding = PaddingValues(4.dp),
             colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
         ) {
-            Text("Reintentar", modifier = Modifier.padding(horizontal = 8.dp))
+            Text(
+                stringResource(id = R.string.retry),
+                modifier = Modifier.padding(horizontal = 8.dp)
+            )
         }
     }
 }

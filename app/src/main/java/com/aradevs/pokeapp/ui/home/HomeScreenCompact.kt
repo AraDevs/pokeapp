@@ -14,6 +14,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -24,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aradevs.pokeapp.MockPokemonActions
 import com.aradevs.pokeapp.PokemonActions
+import com.aradevs.pokeapp.R
 import com.aradevs.pokeapp.ui.commons.PokemonAppBar
 import com.aradevs.pokeapp.ui.commons.PokemonSearchBar
 import com.aradevs.pokeapp.ui.theme.AppFont
@@ -33,11 +35,10 @@ import com.aradevs.pokeapp.ui.theme.borderGray
 @Composable
 fun HomeScreenCompact(modifier: Modifier = Modifier, pokemonActions: PokemonActions) {
     val annotatedString = buildAnnotatedString {
-        append("¡Hola,")
+        append(stringResource(id = R.string.greetings_part_1))
         withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-            append(" bienvenido")
+            append(" ${stringResource(id = R.string.greetings_part_2)}")
         }
-        append("!")
     }
     Column(modifier = modifier) {
         PokemonAppBar()
@@ -53,7 +54,7 @@ fun HomeScreenCompact(modifier: Modifier = Modifier, pokemonActions: PokemonActi
         )
         Spacer(modifier = Modifier.height(12.dp))
         PokemonSearchBar(
-            hint = "Buscar",
+            hint = stringResource(id = R.string.search_a_pokemon),
             currentValue = pokemonActions.getFilterValue().value,
             onValueChanged = { newValue -> pokemonActions.updateFilterValue(newValue) },
             onSearch = {

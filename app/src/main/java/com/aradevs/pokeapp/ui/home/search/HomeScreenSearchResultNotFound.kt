@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,7 +31,8 @@ fun HomeScreenSearchResultNotFound(modifier: Modifier = Modifier) {
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            "No pudimos encontrar dicho Pokemon", fontFamily = AppFont.Montserrat,
+            stringResource(id = R.string.we_could_not_find_any_pokemon),
+            fontFamily = AppFont.Montserrat,
             style = TextStyle(
                 fontSize = 15.sp,
                 fontWeight = FontWeight.W700,

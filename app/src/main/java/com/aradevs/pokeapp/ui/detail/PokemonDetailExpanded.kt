@@ -1,6 +1,5 @@
 package com.aradevs.pokeapp.ui.detail
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -29,12 +28,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.palette.graphics.Palette
-import com.aradevs.pokeapp.MockPokemonActions
-import com.aradevs.pokeapp.PokemonActions
 import com.aradevs.pokeapp.R
 import com.aradevs.pokeapp.domain.Status
-import com.aradevs.pokeapp.domain.pokemon.detail.mockPokemonDetail
-import com.aradevs.pokeapp.domain.pokemon.list.mockPokemon
 import com.aradevs.pokeapp.ui.commons.PokemonDetailAppBar
 import com.aradevs.pokeapp.ui.detail.commons.PokemonDetailDescription
 import com.aradevs.pokeapp.ui.detail.commons.PokemonDetailHeader
