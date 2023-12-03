@@ -9,3 +9,13 @@ data class PokemonStat(
 data class PokemonStatDetail(
     val name: PokemonStatName,
 )
+
+fun mockPokemonStatDetail(name: PokemonStatName): PokemonStatDetail = PokemonStatDetail(
+    name = name,
+)
+
+fun mockPokemonStat(baseStat: Int, name: PokemonStatName) = PokemonStat(
+    baseStat = baseStat,
+    effort = 100,
+    stat = mockPokemonStatDetail(name),
+)

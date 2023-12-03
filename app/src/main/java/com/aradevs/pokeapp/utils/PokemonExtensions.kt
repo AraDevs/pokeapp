@@ -4,6 +4,8 @@ import com.aradevs.pokeapp.R
 import com.aradevs.pokeapp.domain.pokemon.detail.PokemonStatName
 import com.aradevs.pokeapp.domain.pokemon.detail.PokemonTypeName
 
+const val MAX_POKEMON_EV = 255 //for first gen, according to https://bulbapedia.bulbagarden.net/wiki/Effort_values
+
 fun PokemonTypeName.toStringResource(): Int =
     when (this) {
         PokemonTypeName.BUG -> R.string.type_bug

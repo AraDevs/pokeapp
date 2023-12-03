@@ -23,13 +23,13 @@ fun PokemonDetailTypeTag(text: String) {
         modifier = Modifier
             .height(24.dp)
             .shadow(
-                elevation = 28.dp,
+                elevation = 4.dp,
                 shape = RoundedCornerShape(size = 21.dp),
-                spotColor = Color.Transparent,
-                ambientColor = Color.Transparent
+                spotColor = Color.Black,
+                ambientColor = Color.Black
             )
             .border(1.dp, MaterialTheme.colorScheme.onPrimary, RoundedCornerShape(size = 21.dp))
-            .background(MaterialTheme.colorScheme.secondary)
+            .background(MaterialTheme.colorScheme.surface)
     ) {
         Text(
             modifier = Modifier

@@ -29,7 +29,14 @@ val mockPokemonDetail = PokemonDetail(
     name = "bulbasaur",
     height = 7,
     weight = 50,
-    stats = listOf(),
+    stats = listOf(
+        mockPokemonStat(45, PokemonStatName.HP),
+        mockPokemonStat(49, PokemonStatName.ATTACK),
+        mockPokemonStat(30, PokemonStatName.DEFENSE),
+        mockPokemonStat(21, PokemonStatName.SPECIAL_ATTACK),
+        mockPokemonStat(33, PokemonStatName.SPECIAL_DEFENSE),
+        mockPokemonStat(45, PokemonStatName.SPEED),
+    ),
     types = listOf(
         PokemonType(
             slot = 1,

@@ -31,29 +31,30 @@ import com.aradevs.pokeapp.ui.theme.PokeappTheme
 import com.aradevs.pokeapp.utils.toStringResource
 
 @Composable
-fun PokemonDetailHeader(modifier: Modifier = Modifier, pokemonDetail: PokemonDetail) {
-
-    val palette: MutableState<Palette?> = remember {
-        mutableStateOf(null)
-    }
+fun PokemonDetailHeader(
+    modifier: Modifier = Modifier,
+    pokemonDetail: PokemonDetail,
+    palette: Palette? = null,
+    paletteSetter: (Palette) -> Unit
+) {
 
     val imagePainter = rememberAsyncImagePainter(
         ImageRequest.Builder(LocalContext.current)
             .placeholder(R.drawable.pokemon_logo)
             .error(R.drawable.pokemon_missingno)
-            .data(data = obtainPokemonImage(pokemonDetail.id.toInt()))
+            .data(data = obtainPokemonImage(4))
             .allowHardware(false)
             .build(),
         onState = { state ->
             if (state is AsyncImagePainter.State.Success) {
                 val bitmap = state.result.drawable.toBitmap()
-                palette.value = Palette.from(bitmap).generate()
+                paletteSetter(Palette.from(bitmap).generate())
             }
         }
     )
 
     Box(modifier = modifier) {
-        PokemonDetailDynamicBackground(palette = palette.value)
+        PokemonDetailDynamicBackground(palette = palette)
         Column(
             modifier = Modifier.align(Alignment.TopCenter),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -83,6 +84,6 @@ fun PokemonDetailHeader(modifier: Modifier = Modifier, pokemonDetail: PokemonDet
 @Composable
 fun PokemonDetailHeaderPreview() {
     PokeappTheme {
-        PokemonDetailHeader(pokemonDetail = mockPokemonDetail)
+        PokemonDetailHeader(pokemonDetail = mockPokemonDetail, palette = null, paletteSetter = {})
     }
 }

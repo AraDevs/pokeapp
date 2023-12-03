@@ -3,7 +3,7 @@
     <string name="home_title" translatable="false">Pokédex</string>
     <string name="weight">Peso</string>
     <string name="height">Altura</string>
-    <string name="stats">Estadisticas</string>
+    <string name="stats">Estadísticas</string>
 
     <!-- Pokemon stats-->
     <string name="hp">HP</string>
