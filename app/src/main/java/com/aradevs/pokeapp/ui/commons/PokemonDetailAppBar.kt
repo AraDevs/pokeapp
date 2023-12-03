@@ -24,11 +24,13 @@ import com.aradevs.pokeapp.domain.pokemon.list.mockPokemon
 import com.aradevs.pokeapp.ui.theme.AppFont
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
 import com.aradevs.pokeapp.utils.toTripeDigits
+import com.aradevs.safe.safeInt
+import com.aradevs.safe.safeString
 
 @Composable
 fun PokemonDetailAppBar(
     modifier: Modifier = Modifier,
-    pokemon: Pokemon,
+    pokemon: Pokemon? = null,
     onBackPressed: () -> Unit = {}
 ) {
     Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
@@ -44,7 +46,7 @@ fun PokemonDetailAppBar(
             modifier = Modifier
                 .weight(1F)
                 .padding(horizontal = 8.dp),
-            text = pokemon.name,
+            text = pokemon?.name.safeString(),
             fontFamily = AppFont.Montserrat,
             style = TextStyle(
                 fontSize = 16.sp,
@@ -55,7 +57,7 @@ fun PokemonDetailAppBar(
         Text(
             modifier = Modifier
                 .padding(horizontal = 16.dp),
-            text = "#${pokemon.id.toTripeDigits()}",
+            text = "#${pokemon?.id.safeInt().toTripeDigits()}",
             fontFamily = AppFont.Montserrat,
             style = TextStyle(
                 fontSize = 16.sp,

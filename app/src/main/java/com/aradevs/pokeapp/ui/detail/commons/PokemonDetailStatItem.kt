@@ -1,4 +1,4 @@
-package com.aradevs.pokeapp.ui.detail
+package com.aradevs.pokeapp.ui.detail.commons
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutLinearInEasing
@@ -41,9 +41,9 @@ fun PokemonDetailStatItem(
 ) {
     val percent = remember(MAX_POKEMON_EV) { Animatable(0F) }
 
-    LaunchedEffect(pokemonStat.effort, MAX_POKEMON_EV) {
+    LaunchedEffect(pokemonStat.baseStat, MAX_POKEMON_EV) {
         percent.animateTo(
-            targetValue = pokemonStat.effort.toFloat() / MAX_POKEMON_EV,
+            targetValue = pokemonStat.baseStat.toFloat() / MAX_POKEMON_EV,
             animationSpec = tween(
                 durationMillis = (1000 * (1f - percent.value)).toInt(),
                 easing = FastOutLinearInEasing
@@ -75,7 +75,7 @@ fun PokemonDetailStatItem(
         Spacer(modifier = Modifier.width(10.dp))
         Text(
             modifier = Modifier.weight(0.1F),
-            text = pokemonStat.effort.toTripeDigits(),
+            text = pokemonStat.baseStat.toTripeDigits(),
             textAlign = TextAlign.End,
             fontSize = 14.sp,
             fontWeight = FontWeight.W700,

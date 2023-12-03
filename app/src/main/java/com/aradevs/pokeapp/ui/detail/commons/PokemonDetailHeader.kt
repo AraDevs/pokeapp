@@ -1,4 +1,4 @@
-package com.aradevs.pokeapp.ui.detail
+package com.aradevs.pokeapp.ui.detail.commons
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -8,9 +8,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -42,7 +39,7 @@ fun PokemonDetailHeader(
         ImageRequest.Builder(LocalContext.current)
             .placeholder(R.drawable.pokemon_logo)
             .error(R.drawable.pokemon_missingno)
-            .data(data = obtainPokemonImage(4))
+            .data(data = obtainPokemonImage(pokemonDetail.id.toInt()))
             .allowHardware(false)
             .build(),
         onState = { state ->

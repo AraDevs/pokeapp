@@ -24,7 +24,7 @@ fun PokemonDetailDynamicBackground(palette: Palette?) {
             .height(157.dp)
             .fillMaxWidth()
             .shadow(
-                elevation = 28.dp,
+                elevation = 8.dp,
                 shape = RoundedCornerShape(size = 15.dp),
                 spotColor = Color.Black,
                 ambientColor = Color.Black

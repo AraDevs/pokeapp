@@ -1,4 +1,4 @@
-package com.aradevs.pokeapp.ui.detail
+package com.aradevs.pokeapp.ui.detail.commons
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

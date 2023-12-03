@@ -34,5 +34,6 @@
     <string name="type_fairy">Hada</string>
     <string name="type_shadow">Sombra</string>
     <string name="type_unknown">Desconocido</string>
+    <string name="title_activity_pokemon_detail">PokemonDetailActivity</string>
 
 </resources>

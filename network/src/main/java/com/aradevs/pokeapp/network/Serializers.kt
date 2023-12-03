@@ -85,12 +85,14 @@ data class PokemonSpeciesTextLanguageSerializer(
 )
 
 data class PokemonSpeciesFlavorTextEntrySerializer(
+    @Json(name = "flavor_text")
     val flavorText: String?,
     val language: PokemonSpeciesTextLanguageSerializer,
 )
 
 data class PokemonSpeciesSerializer(
     val id: String?,
+    @Json(name = "flavor_text_entries")
     val flavorTextEntries: List<PokemonSpeciesFlavorTextEntrySerializer>?,
 )
 //endregion

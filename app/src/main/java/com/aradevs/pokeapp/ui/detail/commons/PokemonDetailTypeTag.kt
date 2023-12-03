@@ -1,4 +1,4 @@
-package com.aradevs.pokeapp.ui.detail
+package com.aradevs.pokeapp.ui.detail.commons
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

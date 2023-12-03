@@ -26,16 +26,22 @@ import com.aradevs.pokeapp.ui.theme.AppFont
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
 
 @Composable
-fun ErrorContainer(modifier: Modifier = Modifier, onRetry: () -> Unit = {}) {
+fun ErrorContainer(
+    modifier: Modifier = Modifier,
+    onRetry: () -> Unit = {},
+    showImage: Boolean = true,
+) {
     Column(
         modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Image(
-            painterResource(id = R.drawable.error_image),
-            contentDescription = "Error image",
-        )
+        if(showImage){
+            Image(
+                painterResource(id = R.drawable.error_image),
+                contentDescription = "Error image",
+            )
+        }
         Spacer(modifier = Modifier.height(10.dp))
         Text(
             "Algo salio mal", fontFamily = AppFont.Montserrat,

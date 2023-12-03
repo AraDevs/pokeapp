@@ -112,7 +112,7 @@ fun PokemonSpeciesTextLanguageSerializer.toDomain(): PokemonSpeciesTextLanguage 
 
 fun PokemonSpeciesFlavorTextEntrySerializer.toDomain(): PokemonSpeciesFlavorTextEntry =
     PokemonSpeciesFlavorTextEntry(
-        flavorText = flavorText.safeString(),
+        flavorText = flavorText?.replace("\n", "").safeString(),
         language = language.toDomain(),
     )
 
