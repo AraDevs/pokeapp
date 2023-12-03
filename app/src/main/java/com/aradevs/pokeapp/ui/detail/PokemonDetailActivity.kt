@@ -80,4 +80,8 @@ class PokemonDetailActivity : ComponentActivity(), PokemonDetailActions {
 
     override fun getCurrentPokemon(): MutableState<Pokemon?> =
         _viewModel.currentPokemon
+
+    override fun onBackButtonPressed() {
+        finish()
+    }
 }

@@ -19,6 +19,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -31,6 +32,7 @@ import androidx.palette.graphics.Palette
 import com.aradevs.pokeapp.MockPokemonActions
 import com.aradevs.pokeapp.PokemonActions
 import com.aradevs.pokeapp.R
+import com.aradevs.pokeapp.domain.Status
 import com.aradevs.pokeapp.domain.pokemon.detail.mockPokemonDetail
 import com.aradevs.pokeapp.domain.pokemon.list.mockPokemon
 import com.aradevs.pokeapp.ui.commons.PokemonDetailAppBar
@@ -38,6 +40,7 @@ import com.aradevs.pokeapp.ui.detail.commons.PokemonDetailDescription
 import com.aradevs.pokeapp.ui.detail.commons.PokemonDetailHeader
 import com.aradevs.pokeapp.ui.detail.commons.PokemonDetailInfo
 import com.aradevs.pokeapp.ui.detail.commons.PokemonDetailStatItem
+import com.aradevs.pokeapp.ui.detail.commons.PokemonDetailStatusHandler
 import com.aradevs.pokeapp.ui.theme.AppFont
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
 import com.aradevs.pokeapp.utils.FoldableLandscapePreview
@@ -58,70 +61,88 @@ fun PokemonDetailExpanded(
         pokemonDetailActions.getCurrentPokemon()
     }
 
+    val currentPokemonDetail = pokemonDetailActions.getPokemonDetailStatus().collectAsState()
+
     Column {
         PokemonDetailAppBar(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)
                 .background(MaterialTheme.colorScheme.background),
-            pokemon = currentPokemon
-        )
-        Row(modifier) {
-            Column(
-                Modifier
-                    .weight(0.5F)
-                    .fillMaxHeight()
-                    .verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                PokemonDetailHeader(
-                    pokemonDetail = mockPokemonDetail,
-                    palette = palette,
-                    paletteSetter = paletteSetter
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                PokemonDetailInfo(
-                    modifier = Modifier
-                        .height(58.dp)
-                        .fillMaxWidth(), pokemonDetail = mockPokemonDetail
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                PokemonDetailDescription(pokemonDetailActions = pokemonDetailActions)
+            pokemon = currentPokemon,
+            onBackPressed = {
+                pokemonDetailActions.onBackButtonPressed()
             }
-            Spacer(modifier = Modifier.width(30.dp))
-            LazyColumn(
-                Modifier
-                    .weight(0.5F)
-                    .fillMaxHeight(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                item {
-                    Column(
-                        modifier = Modifier.fillMaxWidth(0.8F),
-                        horizontalAlignment = Alignment.Start
-                    ) {
-                        Spacer(modifier = Modifier.height(10.dp))
-                        Text(
-                            text = stringResource(id = R.string.stats),
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.W700,
-                            fontFamily = AppFont.Montserrat,
-                            color = MaterialTheme.colorScheme.onPrimary,
+        )
+        PokemonDetailStatusHandler(
+            modifier = Modifier.fillMaxSize(),
+            status = currentPokemonDetail.value,
+            onRetry = {
+                pokemonDetailActions.getPokemonDetail()
+            }
+        )
+        when (val status = currentPokemonDetail.value) {
+            is Status.Success -> Row(modifier) {
+                Column(
+                    Modifier
+                        .weight(0.5F)
+                        .fillMaxHeight()
+                        .verticalScroll(rememberScrollState()),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    PokemonDetailHeader(
+                        pokemonDetail = status.data,
+                        palette = palette,
+                        paletteSetter = paletteSetter
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    PokemonDetailInfo(
+                        modifier = Modifier
+                            .height(58.dp)
+                            .fillMaxWidth(), pokemonDetail = status.data
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    PokemonDetailDescription(pokemonDetailActions = pokemonDetailActions)
+                }
+                Spacer(modifier = Modifier.width(30.dp))
+                LazyColumn(
+                    Modifier
+                        .weight(0.5F)
+                        .fillMaxHeight(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    item {
+                        Column(
+                            modifier = Modifier.fillMaxWidth(0.8F),
+                            horizontalAlignment = Alignment.Start
+                        ) {
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(
+                                text = stringResource(id = R.string.stats),
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.W700,
+                                fontFamily = AppFont.Montserrat,
+                                color = MaterialTheme.colorScheme.onPrimary,
+                            )
+                            Spacer(modifier = Modifier.height(10.dp))
+                        }
+                    }
+                    items(status.data.stats) {
+                        PokemonDetailStatItem(
+                            modifier = Modifier
+                                .padding(vertical = 6.dp)
+                                .fillMaxWidth(0.8F),
+                            palette = palette,
+                            pokemonStat = it
                         )
-                        Spacer(modifier = Modifier.height(10.dp))
                     }
                 }
-                items(mockPokemonDetail.stats) {
-                    PokemonDetailStatItem(
-                        modifier = Modifier
-                            .padding(vertical = 6.dp)
-                            .fillMaxWidth(0.8F),
-                        palette = palette,
-                        pokemonStat = it
-                    )
-                }
+            }
+
+            else -> {
+                //Do nothing
             }
         }
     }

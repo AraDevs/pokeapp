@@ -66,6 +66,9 @@ fun PokemonDetailCompactMedium(
                 .height(48.dp)
                 .background(MaterialTheme.colorScheme.background),
             pokemon = currentPokemon,
+            onBackPressed = {
+                pokemonDetailActions.onBackButtonPressed()
+            }
         )
         PokemonDetailStatusHandler(
             modifier = Modifier.fillMaxSize(),

@@ -22,6 +22,8 @@ interface PokemonDetailActions {
     fun getPokemonSpecies()
 
     fun getCurrentPokemon(): MutableState<Pokemon?>
+
+    fun onBackButtonPressed()
 }
 
 object MockPokemonDetailActions : PokemonDetailActions {
@@ -38,6 +40,10 @@ object MockPokemonDetailActions : PokemonDetailActions {
     }
 
     override fun getPokemonSpecies() {
+        //no-op
+    }
+
+    override fun onBackButtonPressed() {
         //no-op
     }
 
