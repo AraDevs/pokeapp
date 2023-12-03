@@ -1,4 +1,4 @@
-package com.aradevs.pokeapp.ui.home.commons
+package com.aradevs.pokeapp.ui.commons
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import androidx.compose.foundation.background

@@ -26,5 +26,18 @@ val mockPokemonDetail = PokemonDetail(
     id = "1",
     name = "bulbasaur",
     stats = listOf(),
-    types = listOf()
+    types = listOf(
+        PokemonType(
+            slot = 1,
+            type = PokemonTypeDetail(
+                name = PokemonTypeName.GRASS,
+            )
+        ),
+        PokemonType(
+            slot = 2,
+            type = PokemonTypeDetail(
+                name = PokemonTypeName.POISON,
+            )
+        )
+    )
 )

@@ -74,6 +74,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     implementation("androidx.compose.material3:material3-window-size-class:1.1.2")
+    implementation("androidx.palette:palette-ktx:1.0.0")
+
 
     //modules
     implementation(project(":domain"))

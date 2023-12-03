@@ -10,8 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.itemKey
 import com.aradevs.pokeapp.PokemonActions
-import com.aradevs.pokeapp.ui.home.commons.PokemonCard
-import com.aradevs.pokeapp.ui.home.commons.PokemonListErrorHandler
+import com.aradevs.pokeapp.ui.commons.PokemonCard
 import com.aradevs.pokeapp.ui.home.search.HomeScreenSearchContainer
 
 @Composable

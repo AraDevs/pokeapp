@@ -10,8 +10,8 @@ import com.aradevs.pokeapp.MockPokemonActions
 import com.aradevs.pokeapp.PokemonActions
 import com.aradevs.pokeapp.domain.PokemonNotFoundException
 import com.aradevs.pokeapp.domain.Status
-import com.aradevs.pokeapp.ui.home.commons.ErrorContainer
-import com.aradevs.pokeapp.ui.home.commons.Loader
+import com.aradevs.pokeapp.ui.commons.ErrorContainer
+import com.aradevs.pokeapp.ui.commons.Loader
 
 @Composable
 fun HomeScreenSearchContainer(modifier: Modifier = Modifier, pokemonActions: PokemonActions) {

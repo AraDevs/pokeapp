@@ -1,4 +1,4 @@
-package com.aradevs.pokeapp.ui.home.commons
+package com.aradevs.pokeapp.ui.commons
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
