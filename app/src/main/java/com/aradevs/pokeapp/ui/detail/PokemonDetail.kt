@@ -40,6 +40,15 @@ fun PokemonDetailCompact(modifier: Modifier = Modifier, pokemonActions: PokemonA
         ) {
             Spacer(modifier = Modifier.height(8.dp))
             PokemonDetailHeader(pokemonDetail = mockPokemonDetail)
+            Spacer(modifier = Modifier.height(10.dp))
+            PokemonDetailInfo(
+                modifier = Modifier
+                    .height(58.dp)
+                    .fillMaxWidth(), pokemonDetail = mockPokemonDetail
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+            PokemonDetailDescription(pokemonActions = pokemonActions)
+            Spacer(modifier = Modifier.height(10.dp))
         }
     }
 }

@@ -95,8 +95,10 @@ fun PokemonDetailSerializer.toDomain(): PokemonDetail =
     PokemonDetail(
         id = id.safeString(),
         name = name.safeString().capitalized(),
+        height = height.safeInt(),
+        weight = weight.safeInt(),
         stats = stats?.map { it.toDomain() }.safeList(),
-        types = types?.map { it.toDomain() }.safeList()
+        types = types?.sortedBy { it.slot }?.map { it.toDomain() }.safeList()
     )
 
 //endregion

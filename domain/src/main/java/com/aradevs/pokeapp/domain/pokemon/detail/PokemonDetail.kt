@@ -8,6 +8,8 @@ import com.aradevs.pokeapp.domain.pokemon.list.Pokemon
 data class PokemonDetail(
     val id: String,
     val name: String,
+    val height: Int,
+    val weight: Int,
     val stats: List<PokemonStat>,
     val types: List<PokemonType>
 )
@@ -25,6 +27,8 @@ fun PokemonDetail.toPokemon(): Pokemon {
 val mockPokemonDetail = PokemonDetail(
     id = "1",
     name = "bulbasaur",
+    height = 7,
+    weight = 50,
     stats = listOf(),
     types = listOf(
         PokemonType(

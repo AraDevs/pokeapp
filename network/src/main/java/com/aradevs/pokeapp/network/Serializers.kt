@@ -51,6 +51,8 @@ enum class PokemonTypeNameSerializer {
 data class PokemonDetailSerializer(
     val id: String?,
     val name: String?,
+    val height: Int?, //decimeters
+    val weight: Int?, //hectograms
     val stats: List<PokemonStatSerializer>?,
     val types: List<PokemonTypeSerializer>?
 )
