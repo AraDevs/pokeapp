@@ -1,4 +1,4 @@
-package com.aradevs.pokeapp.ui.home.commons
+package com.aradevs.pokeapp.ui.home
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -6,6 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.paging.LoadState
 import com.aradevs.pokeapp.PokemonActions
+import com.aradevs.pokeapp.ui.commons.ErrorContainer
+import com.aradevs.pokeapp.ui.commons.Loader
 
 @Composable
 fun PokemonListErrorHandler(pokemonActions: PokemonActions) {

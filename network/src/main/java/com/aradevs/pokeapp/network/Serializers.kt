@@ -51,6 +51,8 @@ enum class PokemonTypeNameSerializer {
 data class PokemonDetailSerializer(
     val id: String?,
     val name: String?,
+    val height: Int?, //decimeters
+    val weight: Int?, //hectograms
     val stats: List<PokemonStatSerializer>?,
     val types: List<PokemonTypeSerializer>?
 )
@@ -83,12 +85,14 @@ data class PokemonSpeciesTextLanguageSerializer(
 )
 
 data class PokemonSpeciesFlavorTextEntrySerializer(
+    @Json(name = "flavor_text")
     val flavorText: String?,
     val language: PokemonSpeciesTextLanguageSerializer,
 )
 
 data class PokemonSpeciesSerializer(
     val id: String?,
+    @Json(name = "flavor_text_entries")
     val flavorTextEntries: List<PokemonSpeciesFlavorTextEntrySerializer>?,
 )
 //endregion

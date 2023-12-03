@@ -1,7 +1,8 @@
-package com.aradevs.pokeapp.ui.home.commons
+package com.aradevs.pokeapp.ui.commons
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,7 +35,7 @@ import com.aradevs.pokeapp.ui.theme.shadowColor
 import com.aradevs.pokeapp.utils.toTripeDigits
 
 @Composable
-fun PokemonCard(modifier: Modifier = Modifier, pokemon: Pokemon) {
+fun PokemonCard(modifier: Modifier = Modifier, pokemon: Pokemon, onTapped: () -> Unit) {
     Box(modifier = modifier) {
         Box(
             modifier = Modifier
@@ -45,7 +46,8 @@ fun PokemonCard(modifier: Modifier = Modifier, pokemon: Pokemon) {
                     ambientColor = shadowColor
                 )
                 .background(MaterialTheme.colorScheme.surface)
-                .fillMaxSize(),
+                .fillMaxSize()
+                .clickable(onClick = onTapped)
         ) {
             Column(
                 modifier = Modifier
@@ -104,6 +106,6 @@ fun PokemonCardPreview() {
             }
         }
     }*/
-        PokemonCard(modifier = Modifier.size(165.dp), pokemon = mockPokemon)
+        PokemonCard(modifier = Modifier.size(165.dp), pokemon = mockPokemon, onTapped = {})
     }
 }

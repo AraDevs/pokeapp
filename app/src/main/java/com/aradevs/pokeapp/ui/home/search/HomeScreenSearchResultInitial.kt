@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,18 +20,18 @@ import com.aradevs.pokeapp.ui.theme.PokeappTheme
 import com.aradevs.pokeapp.ui.theme.borderGray
 
 @Composable
-fun HomeScreenSearchResultInitial(modifier: Modifier = Modifier){
+fun HomeScreenSearchResultInitial(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            modifier= Modifier.size(200.dp),
+            modifier = Modifier.size(200.dp),
             painter = painterResource(id = R.drawable.pokedex),
             contentDescription = "Pokedex"
         )
         Text(
-            text = "Busca un pokemon",
+            text = stringResource(id = R.string.search_a_pokemon),
             style = TextStyle(
                 fontSize = 16.sp,
                 fontFamily = AppFont.Montserrat,
@@ -43,7 +44,7 @@ fun HomeScreenSearchResultInitial(modifier: Modifier = Modifier){
 
 @Composable
 @Preview
-fun HomeScreenSearchResultInitialPreview(){
+fun HomeScreenSearchResultInitialPreview() {
     PokeappTheme {
         HomeScreenSearchResultInitial()
     }

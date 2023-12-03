@@ -17,6 +17,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -26,8 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aradevs.pokeapp.MockPokemonActions
 import com.aradevs.pokeapp.PokemonActions
-import com.aradevs.pokeapp.ui.home.commons.PokemonAppBar
-import com.aradevs.pokeapp.ui.home.commons.PokemonSearchBar
+import com.aradevs.pokeapp.R
+import com.aradevs.pokeapp.ui.commons.PokemonAppBar
+import com.aradevs.pokeapp.ui.commons.PokemonSearchBar
 import com.aradevs.pokeapp.ui.theme.AppFont
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
 import com.aradevs.pokeapp.ui.theme.borderGray
@@ -39,11 +41,10 @@ fun HomeScreenMediumExpanded(
     pokemonActions: PokemonActions,
 ) {
     val annotatedString = buildAnnotatedString {
-        append("¡Hola,")
+        append(stringResource(id = R.string.greetings_part_1))
         withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-            append(" bienvenido")
+            append(" ${stringResource(id = R.string.greetings_part_2)}")
         }
-        append("!")
     }
     Row(modifier = modifier) {
         Column(
