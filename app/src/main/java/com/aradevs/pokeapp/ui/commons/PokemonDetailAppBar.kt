@@ -28,6 +28,13 @@ import com.aradevs.pokeapp.utils.toTripeDigits
 import com.aradevs.safe.safeInt
 import com.aradevs.safe.safeString
 
+/**
+ * Pokemon card composable
+ * @param modifier [Modifier] to be applied to the container
+ * @param pokemon [Pokemon] object to be displayed
+ * @param onBackPressed [() -> Unit] function to be executed when the back button is pressed
+ * @param onWikiPressed [() -> Unit] function to be executed when the wiki button is pressed
+ */
 @Composable
 fun PokemonDetailAppBar(
     modifier: Modifier = Modifier,

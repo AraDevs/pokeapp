@@ -10,6 +10,13 @@ import androidx.compose.ui.Modifier
 import androidx.palette.graphics.Palette
 import com.aradevs.pokeapp.PokemonActions
 
+/**
+ * Pokemon detail composable
+ * @param modifier [Modifier] to be applied to the container
+ * @param windowSizeClass [WindowSizeClass] object to be used
+ * @param pokemonDetailActions [PokemonActions] object to be used
+ * @param pokemonDetailActions [PokemonDetailActions] object to be used
+ */
 @Composable
 fun PokemonDetail(
     modifier: Modifier = Modifier,

@@ -9,6 +9,12 @@ import com.aradevs.pokeapp.domain.pokemon.list.Pokemon
 import com.aradevs.pokeapp.ui.commons.ErrorContainer
 import com.aradevs.pokeapp.ui.commons.Loader
 
+/**
+ * Pokemon detail status handler composable
+ * @param modifier [Modifier] to be applied to the container
+ * @param status [Status] object to be displayed
+ * @param onRetry [Function] to be called when retrying
+ */
 @Composable
 fun PokemonDetailStatusHandler(
     modifier: Modifier = Modifier,

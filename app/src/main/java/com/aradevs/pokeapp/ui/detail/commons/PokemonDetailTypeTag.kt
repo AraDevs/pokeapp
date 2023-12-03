@@ -17,6 +17,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
 
+/**
+ * Pokemon detail type tag composable
+ * @param text [String] text to be displayed
+ */
 @Composable
 fun PokemonDetailTypeTag(text: String) {
     Box(

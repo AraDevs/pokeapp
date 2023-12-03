@@ -19,6 +19,10 @@ import com.aradevs.pokeapp.ui.theme.AppFont
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
 import com.aradevs.pokeapp.ui.theme.borderGray
 
+/**
+ * Home screen search result initial composable
+ * @param modifier [Modifier] the composable modifier
+ */
 @Composable
 fun HomeScreenSearchResultInitial(modifier: Modifier = Modifier) {
     Column(

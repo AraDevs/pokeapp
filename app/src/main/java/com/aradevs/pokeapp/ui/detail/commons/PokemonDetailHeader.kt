@@ -27,6 +27,13 @@ import com.aradevs.pokeapp.ui.detail.dynamic.PokemonDetailDynamicBackground
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
 import com.aradevs.pokeapp.utils.toStringResource
 
+/**
+ * Pokemon detail header composable
+ * @param modifier [Modifier] to be applied to the container
+ * @param pokemonDetail [PokemonDetail] object to be displayed
+ * @param palette [Palette] object to be used
+ * @param paletteSetter [Palette] object setter
+ */
 @Composable
 fun PokemonDetailHeader(
     modifier: Modifier = Modifier,

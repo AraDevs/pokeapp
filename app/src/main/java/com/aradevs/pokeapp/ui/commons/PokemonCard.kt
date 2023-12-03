@@ -34,6 +34,12 @@ import com.aradevs.pokeapp.ui.theme.rounded10Shape
 import com.aradevs.pokeapp.ui.theme.shadowColor
 import com.aradevs.pokeapp.utils.toTripeDigits
 
+/**
+ * Pokemon card composable
+ * @param modifier [Modifier] to be applied to the container
+ * @param pokemon [Pokemon] object to be displayed
+ * @param onTapped [() -> Unit] function to be executed when the card is tapped
+ */
 @Composable
 fun PokemonCard(modifier: Modifier = Modifier, pokemon: Pokemon, onTapped: () -> Unit) {
     Box(modifier = modifier) {

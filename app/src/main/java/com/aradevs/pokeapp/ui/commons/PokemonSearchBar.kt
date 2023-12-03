@@ -32,6 +32,15 @@ import com.aradevs.pokeapp.R
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
 import com.aradevs.pokeapp.ui.theme.borderGray
 
+/**
+ * Pokemon search bar composable
+ * @param modifier [Modifier] to be applied to the container
+ * @param hint [String] hint to be displayed
+ * @param currentValue [String] current value of the search bar
+ * @param onValueChanged [String] function to be executed when the value changes
+ * @param maxLines [Int] max lines of the search bar
+ * @param onSearch [() -> Unit] function to be executed when the search button is pressed
+ */
 @Composable
 fun PokemonSearchBar(
     modifier: Modifier = Modifier,

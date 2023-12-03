@@ -16,6 +16,10 @@ import androidx.compose.ui.unit.dp
 import androidx.palette.graphics.Palette
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
 
+/**
+ * Pokemon detail dynamic background composable
+ * @param palette [Palette] object to be used to generate the background
+ */
 @Composable
 fun PokemonDetailDynamicBackground(palette: Palette?) {
     Box(

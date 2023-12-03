@@ -14,6 +14,10 @@ data class PokemonDetail(
     val types: List<PokemonType>
 )
 
+/**
+ * Converts a [PokemonDetail] to a [Pokemon]
+ */
+
 fun PokemonDetail.toPokemon(): Pokemon {
     Log.e("PokemonDetail", "toPokemon: $this")
     return Pokemon(
@@ -24,6 +28,9 @@ fun PokemonDetail.toPokemon(): Pokemon {
     )
 }
 
+/**
+ * Mocks a [PokemonDetail]
+ */
 val mockPokemonDetail = PokemonDetail(
     id = "1",
     name = "bulbasaur",

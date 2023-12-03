@@ -12,6 +12,9 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.aradevs.pokeapp.R
 
+/**
+ * Loader composable, shows a loader animation
+ */
 @Composable
 fun Loader(modifier: Modifier = Modifier) {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.loader))

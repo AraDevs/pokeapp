@@ -36,6 +36,11 @@ import com.aradevs.pokeapp.ui.theme.rounded10Shape
 import com.aradevs.pokeapp.utils.decimeterToMeters
 import com.aradevs.pokeapp.utils.hectogramsToKilograms
 
+/**
+ * Pokemon detail info composable
+ * @param modifier [Modifier] to be applied to the container
+ * @param pokemonDetail [PokemonDetail] object to be displayed
+ */
 @Composable
 fun PokemonDetailInfo(modifier: Modifier = Modifier, pokemonDetail: PokemonDetail) {
     Card(

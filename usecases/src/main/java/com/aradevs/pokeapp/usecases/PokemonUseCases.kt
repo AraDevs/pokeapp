@@ -13,6 +13,10 @@ import com.aradevs.pokeapp.domain.setIdAndImage
 class FetchPokemonUseCase(
     private val pokemonRepository: PokemonRepository
 ) {
+    /**
+     * Get pokemon list from api
+     * @return LoadResult<Int, Pokemon>
+     */
     operator fun invoke() = object : PagingSource<Int, Pokemon>() {
 
         override fun getRefreshKey(state: PagingState<Int, Pokemon>): Int? {
@@ -54,9 +58,19 @@ class FetchPokemonUseCase(
 }
 
 class GetPokemonDetailUseCase(private val pokemonRepository: PokemonRepository) {
+    /**
+     * Get pokemon detail from api
+     * @param identifier String pokemon identifier
+     * @return Flow<Status<PokemonDetail>>
+     */
     operator fun invoke(identifier: String) = pokemonRepository.getPokemonDetail(identifier)
 }
 
 class GetPokemonSpeciesUseCase(private val pokemonRepository: PokemonRepository) {
+    /**
+     * Get pokemon species from api
+     * @param id Int pokemon id
+     * @return Flow<Status<PokemonSpecies>>
+     */
     operator fun invoke(id: Int) = pokemonRepository.getPokemonSpecies(id)
 }

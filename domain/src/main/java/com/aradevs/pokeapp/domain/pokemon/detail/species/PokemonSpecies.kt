@@ -5,6 +5,9 @@ data class PokemonSpecies(
     val flavorTextEntries: List<PokemonSpeciesFlavorTextEntry>,
 )
 
+/**
+ * Mocked PokemonSpecies
+ */
 val mockPokemonSpecies = PokemonSpecies(
     id = "1",
     flavorTextEntries = listOf(

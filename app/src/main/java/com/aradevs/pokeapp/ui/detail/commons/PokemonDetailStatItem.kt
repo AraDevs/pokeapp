@@ -32,7 +32,12 @@ import com.aradevs.pokeapp.utils.MAX_POKEMON_EV
 import com.aradevs.pokeapp.utils.toStringResource
 import com.aradevs.pokeapp.utils.toTripeDigits
 
-
+/**
+ * Pokemon detail stat item composable
+ * @param modifier [Modifier] to be applied to the container
+ * @param palette [Palette] object to be used
+ * @param pokemonStat [PokemonStat] object to be displayed
+ */
 @Composable
 fun PokemonDetailStatItem(
     modifier: Modifier = Modifier,

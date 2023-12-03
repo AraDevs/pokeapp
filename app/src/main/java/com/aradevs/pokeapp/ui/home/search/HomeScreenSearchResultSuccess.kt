@@ -28,6 +28,11 @@ import com.aradevs.pokeapp.ui.theme.PokeappTheme
 import com.aradevs.pokeapp.ui.theme.borderGray
 import com.aradevs.pokeapp.utils.openNewPokemonDetailActivity
 
+/**
+ * Home screen search result success composable
+ * @param modifier [Modifier] the composable modifier
+ * @param pokemonDetail [PokemonDetail] the pokemon detail object
+ */
 @Composable
 fun HomeScreenSearchResultSuccess(modifier: Modifier = Modifier, pokemonDetail: PokemonDetail) {
     val context = LocalContext.current
