@@ -1,5 +1,7 @@
 package com.aradevs.pokeapp.ui.detail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,6 +20,7 @@ import com.aradevs.pokeapp.domain.pokemon.list.Pokemon
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
 import com.aradevs.pokeapp.utils.POKEMON_ID
 import com.aradevs.pokeapp.utils.POKEMON_NAME
+import com.aradevs.pokeapp.utils.getPokemonWikiUrl
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.StateFlow
 
@@ -83,5 +86,10 @@ class PokemonDetailActivity : ComponentActivity(), PokemonDetailActions {
 
     override fun onBackButtonPressed() {
         finish()
+    }
+
+    override fun openWiki(pokemonName: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(getPokemonWikiUrl(pokemonName)))
+        startActivity(intent)
     }
 }

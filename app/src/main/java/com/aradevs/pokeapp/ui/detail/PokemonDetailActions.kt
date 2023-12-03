@@ -24,6 +24,8 @@ interface PokemonDetailActions {
     fun getCurrentPokemon(): MutableState<Pokemon?>
 
     fun onBackButtonPressed()
+
+    fun openWiki(pokemonName: String)
 }
 
 object MockPokemonDetailActions : PokemonDetailActions {
@@ -44,6 +46,10 @@ object MockPokemonDetailActions : PokemonDetailActions {
     }
 
     override fun onBackButtonPressed() {
+        //no-op
+    }
+
+    override fun openWiki(pokemonName: String) {
         //no-op
     }
 

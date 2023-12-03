@@ -40,3 +40,6 @@ fun PokemonStatName.toStringResource(): Int =
         PokemonStatName.SPEED -> R.string.speed
         PokemonStatName.UNKNOWN -> R.string.type_unknown
     }
+
+fun getPokemonWikiUrl(pokemonName: String): String =
+    "https://pokemon.fandom.com/es/wiki/$pokemonName"

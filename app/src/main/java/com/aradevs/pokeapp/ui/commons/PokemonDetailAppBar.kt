@@ -1,6 +1,7 @@
 package com.aradevs.pokeapp.ui.commons
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -31,6 +32,7 @@ import com.aradevs.safe.safeString
 fun PokemonDetailAppBar(
     modifier: Modifier = Modifier,
     pokemon: Pokemon? = null,
+    onWikiPressed: () -> Unit = {},
     onBackPressed: () -> Unit = {}
 ) {
     Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
@@ -56,7 +58,8 @@ fun PokemonDetailAppBar(
         )
         Text(
             modifier = Modifier
-                .padding(horizontal = 16.dp),
+                .padding(horizontal = 16.dp)
+                .clickable(onClick = onWikiPressed),
             text = "#${pokemon?.id.safeInt().toTripeDigits()}",
             fontFamily = AppFont.Montserrat,
             style = TextStyle(

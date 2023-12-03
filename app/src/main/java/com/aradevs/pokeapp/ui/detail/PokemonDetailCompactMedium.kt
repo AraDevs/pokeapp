@@ -44,6 +44,7 @@ import com.aradevs.pokeapp.utils.PhoneLandscapePreview
 import com.aradevs.pokeapp.utils.TabletLandscapePreview
 import com.aradevs.pokeapp.utils.TabletPortraitPreview
 import com.aradevs.safe.safeInt
+import com.aradevs.safe.safeString
 
 @Composable
 fun PokemonDetailCompactMedium(
@@ -68,6 +69,9 @@ fun PokemonDetailCompactMedium(
             pokemon = currentPokemon,
             onBackPressed = {
                 pokemonDetailActions.onBackButtonPressed()
+            },
+            onWikiPressed = {
+                pokemonDetailActions.openWiki(currentPokemon?.name.safeString())
             }
         )
         PokemonDetailStatusHandler(
