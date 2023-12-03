@@ -10,12 +10,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aradevs.pokeapp.domain.pokemon.detail.PokemonDetail
+import com.aradevs.pokeapp.domain.pokemon.detail.mockPokemonDetail
 import com.aradevs.pokeapp.domain.pokemon.detail.toPokemon
 import com.aradevs.pokeapp.ui.home.commons.PokemonCard
 import com.aradevs.pokeapp.ui.theme.AppFont
+import com.aradevs.pokeapp.ui.theme.PokeappTheme
 import com.aradevs.pokeapp.ui.theme.borderGray
 
 @Composable
@@ -36,5 +39,13 @@ fun HomeScreenSearchResultSuccess(modifier: Modifier = Modifier, pokemonDetail: 
                 .size(165.dp),
             pokemon = pokemonDetail.toPokemon()
         )
+    }
+}
+
+@Preview
+@Composable
+fun HomeScreenSearchResultSuccessPreview() {
+    PokeappTheme {
+        HomeScreenSearchResultSuccess(pokemonDetail = mockPokemonDetail)
     }
 }

@@ -5,6 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.aradevs.pokeapp.MockPokemonActions
 import com.aradevs.pokeapp.PokemonActions
 import com.aradevs.pokeapp.domain.PokemonNotFoundException
 import com.aradevs.pokeapp.domain.Status
@@ -35,4 +37,10 @@ fun HomeScreenSearchContainer(modifier: Modifier = Modifier, pokemonActions: Pok
             }
         }
     }
+}
+
+@Composable
+@Preview
+fun HomeScreenSearchContainerPreview() {
+    HomeScreenSearchContainer(pokemonActions = MockPokemonActions)
 }
