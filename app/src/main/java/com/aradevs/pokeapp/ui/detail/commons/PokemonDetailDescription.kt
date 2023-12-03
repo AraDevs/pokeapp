@@ -22,6 +22,11 @@ import com.aradevs.pokeapp.ui.theme.AppFont
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
 import com.aradevs.pokeapp.utils.getEntryForCurrentLanguage
 
+/**
+ * Pokemon detail description composable
+ * @param modifier [Modifier] to be applied to the container
+ * @param pokemonDetailActions [PokemonDetailActions] interface to be used
+ */
 @Composable
 fun PokemonDetailDescription(
     modifier: Modifier = Modifier,

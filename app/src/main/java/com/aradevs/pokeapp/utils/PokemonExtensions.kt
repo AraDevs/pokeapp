@@ -7,7 +7,8 @@ import com.aradevs.pokeapp.domain.pokemon.detail.PokemonStatName
 import com.aradevs.pokeapp.domain.pokemon.detail.PokemonTypeName
 import com.aradevs.pokeapp.domain.pokemon.detail.species.PokemonSpeciesFlavorTextEntry
 
-const val MAX_POKEMON_EV = 255 //for first gen, according to https://bulbapedia.bulbagarden.net/wiki/Effort_values
+const val MAX_POKEMON_EV =
+    255 //for first gen, according to https://bulbapedia.bulbagarden.net/wiki/Effort_values
 
 fun PokemonTypeName.toStringResource(): Int =
     when (this) {
@@ -47,9 +48,10 @@ fun PokemonStatName.toStringResource(): Int =
 fun getPokemonWikiUrl(pokemonName: String): String =
     "https://pokemon.fandom.com/es/wiki/$pokemonName"
 
+/**
+ * Get the pokemon entry for the current language
+ */
 fun List<PokemonSpeciesFlavorTextEntry>.getEntryForCurrentLanguage(context: Context): String {
-     val currentLanguage = context.resources.configuration.locales[0].language
-    Log.e("getEntryForCurrentLanguage", "currentLanguage: $currentLanguage")
-
+    val currentLanguage = context.resources.configuration.locales[0].language
     return this.firstOrNull { it.language.name == currentLanguage }?.flavorText ?: "N/A"
 }

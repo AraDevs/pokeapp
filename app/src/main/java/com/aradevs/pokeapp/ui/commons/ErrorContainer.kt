@@ -26,6 +26,12 @@ import com.aradevs.pokeapp.R
 import com.aradevs.pokeapp.ui.theme.AppFont
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
 
+/**
+ * Error container to show when something went wrong
+ * @param modifier [Modifier] to be applied to the container
+ * @param onRetry [() -> Unit] function to be executed when the retry button is pressed
+ * @param showImage [Boolean] to show or hide the error image
+ */
 @Composable
 fun ErrorContainer(
     modifier: Modifier = Modifier,

@@ -21,6 +21,10 @@ import com.aradevs.pokeapp.R
 import com.aradevs.pokeapp.ui.theme.AppFont
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
 
+/**
+ * Home screen search result not found composable
+ * @param modifier [Modifier] the composable modifier
+ */
 @Composable
 fun HomeScreenSearchResultNotFound(modifier: Modifier = Modifier) {
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {

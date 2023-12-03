@@ -7,6 +7,9 @@ data class Pokemon(
     val url: String
 )
 
+/**
+ * Mocks a [Pokemon]
+ */
 val mockPokemon: Pokemon = Pokemon(
     id = 1,
     name = "Bulbasaur",

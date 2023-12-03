@@ -13,6 +13,11 @@ import com.aradevs.pokeapp.domain.Status
 import com.aradevs.pokeapp.ui.commons.ErrorContainer
 import com.aradevs.pokeapp.ui.commons.Loader
 
+/**
+ * Home screen search container composable
+ * @param modifier [Modifier] to be applied to the container
+ * @param pokemonActions [PokemonActions] object to be useds
+ */
 @Composable
 fun HomeScreenSearchContainer(modifier: Modifier = Modifier, pokemonActions: PokemonActions) {
     val currentPokemonDetail = pokemonActions.getCurrentPokemonDetail().collectAsState()

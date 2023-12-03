@@ -36,6 +36,9 @@ class PokemonDetailActivityViewModel @Inject constructor(
     var currentPokemon: MutableState<Pokemon?> = mutableStateOf(null)
         private set
 
+    /***
+     * Gets the pokemon detail from server
+     */
     fun getPokemonDetail() {
         if (currentPokemon.value == null) return
         viewModelScope.launch(Dispatchers.IO) {
@@ -46,6 +49,9 @@ class PokemonDetailActivityViewModel @Inject constructor(
         }
     }
 
+    /***
+     * Gets the pokemon species from server
+     */
     fun getPokemonSpecies() {
         if (currentPokemon.value == null) return
         viewModelScope.launch(Dispatchers.IO) {
@@ -56,6 +62,11 @@ class PokemonDetailActivityViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Sets the current pokemon
+     * @param pokemonId [Int] pokemon id
+     * @param pokemonName [String] pokemon name
+     */
     fun setCurrentPokemon(pokemonId: Int, pokemonName: String) {
         currentPokemon.value = Pokemon(
             id = pokemonId,

@@ -12,6 +12,10 @@ import com.aradevs.pokeapp.domain.pokemon.list.mockPokemon
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+/**
+ * Pokemon detail actions interface
+ * This interface is used to define the actions that can be performed in the pokemon detail screen
+ */
 interface PokemonDetailActions {
     fun getPokemonDetailStatus(): StateFlow<Status<PokemonDetail>>
 

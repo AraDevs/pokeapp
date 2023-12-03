@@ -17,6 +17,12 @@ import kotlinx.coroutines.flow.flow
 const val NO_DATA = "No data"
 
 class PokemonRemoteDataSourceImpl(private val api: PokemonApi) : PokemonRemoteDataSource {
+    /**
+     * Get pokemon list from api
+     * @param offset Int start point for pagination
+     * @param limit Int items per request
+     * @return Status<PokemonList>
+     */
     override suspend fun getPokemon(offset: Int, limit: Int): Status<PokemonList> {
         val response = api.getPokemon(offset = offset, limit = limit)
         return when (response.code()) {
@@ -31,6 +37,11 @@ class PokemonRemoteDataSourceImpl(private val api: PokemonApi) : PokemonRemoteDa
         }
     }
 
+    /**
+     * Get pokemon detail from api
+     * @param identifier String pokemon identifier
+     * @return Status<PokemonDetail>
+     */
     override fun getPokemonDetail(identifier: String): Flow<Status<PokemonDetail>> {
         return flow {
             emit(Status.Loading())
@@ -59,6 +70,11 @@ class PokemonRemoteDataSourceImpl(private val api: PokemonApi) : PokemonRemoteDa
         }
     }
 
+    /**
+     * Get pokemon species from api
+     * @param id Int pokemon id
+     * @return Status<PokemonSpecies>
+     */
     override fun getPokemonSpecies(id: Int): Flow<Status<PokemonSpecies>> {
         return flow {
             emit(Status.Loading())
