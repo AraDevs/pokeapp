@@ -31,7 +31,9 @@ fun HomeScreenSearchContainer(modifier: Modifier = Modifier, pokemonActions: Pok
                 if (status.exception is PokemonNotFoundException) {
                     HomeScreenSearchResultNotFound(modifier = Modifier.align(Alignment.Center))
                 } else {
-                    ErrorContainer(modifier = Modifier.align(Alignment.Center))
+                    ErrorContainer(modifier = Modifier.align(Alignment.Center), onRetry = {
+                        pokemonActions.getPokemonDetail(pokemonActions.getFilterValue().value)
+                    })
                 }
             }
 
