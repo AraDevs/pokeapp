@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -42,7 +41,7 @@ fun ErrorContainer(modifier: Modifier = Modifier, onRetry: () -> Unit = {}) {
             "Algo salio mal", fontFamily = AppFont.Montserrat,
             style = TextStyle(
                 fontSize = 15.sp,
-                fontWeight = FontWeight(500),
+                fontWeight = FontWeight.W700,
                 color = MaterialTheme.colorScheme.onPrimary
             )
         )

@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.FilterQuality
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -71,6 +72,7 @@ fun PokemonCard(modifier: Modifier = Modifier, pokemon: Pokemon) {
                     placeholder = painterResource(id = R.drawable.pokemon_logo),
                     error = painterResource(id = R.drawable.pokemon_missingno),
                     model = pokemon.image,
+                    filterQuality = FilterQuality.Medium,
                     contentDescription = null
                 )
                 Text(

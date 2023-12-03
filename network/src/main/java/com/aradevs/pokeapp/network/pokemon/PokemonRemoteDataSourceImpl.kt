@@ -2,6 +2,7 @@ package com.aradevs.pokeapp.network.pokemon
 
 import android.util.Log
 import com.aradevs.pokeapp.data.data_source.PokemonRemoteDataSource
+import com.aradevs.pokeapp.domain.PokemonNotFoundException
 import com.aradevs.pokeapp.domain.pokemon.list.PokemonList
 import com.aradevs.pokeapp.domain.Status
 import com.aradevs.pokeapp.domain.pokemon.detail.PokemonDetail
@@ -12,6 +13,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 
+const val NO_DATA = "No data"
+
 class PokemonRemoteDataSourceImpl(private val api: PokemonApi) : PokemonRemoteDataSource {
     override suspend fun getPokemon(offset: Int, limit: Int): Status<PokemonList> {
         val response = api.getPokemon(offset = offset, limit = limit)
@@ -19,7 +22,7 @@ class PokemonRemoteDataSourceImpl(private val api: PokemonApi) : PokemonRemoteDa
 
             200 -> response.body()?.let {
                 Status.Success(it.toDomain())
-            } ?: Status.Error(Exception("No data"))
+            } ?: Status.Error(Exception(NO_DATA))
 
             else -> {
                 Status.Error(Exception(response.message()))
@@ -27,15 +30,19 @@ class PokemonRemoteDataSourceImpl(private val api: PokemonApi) : PokemonRemoteDa
         }
     }
 
-    override fun getPokemonDetail(id: Int): Flow<Status<PokemonDetail>> {
+    override fun getPokemonDetail(identifier: String): Flow<Status<PokemonDetail>> {
         return flow {
             emit(Status.Loading())
-            val response = api.getPokemonDetail(id = id)
+            val response = api.getPokemonDetail(identifier = identifier)
             when (response.code()) {
 
                 200 -> response.body()?.let {
                     emit(Status.Success(it.toDomain()))
-                } ?: emit(Status.Error(Exception("No data")))
+                } ?: emit(Status.Error(Exception(NO_DATA)))
+
+                404 -> {
+                    emit(Status.Error(PokemonNotFoundException("Pokemon not found")))
+                }
 
                 else -> {
                     emit(Status.Error(Exception(response.message())))
@@ -55,7 +62,7 @@ class PokemonRemoteDataSourceImpl(private val api: PokemonApi) : PokemonRemoteDa
 
                 200 -> response.body()?.let {
                     emit(Status.Success(it.toDomain()))
-                } ?: emit(Status.Error(Exception("No data")))
+                } ?: emit(Status.Error(Exception(NO_DATA)))
 
                 else -> {
                     emit(Status.Error(Exception(response.message())))

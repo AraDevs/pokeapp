@@ -5,10 +5,10 @@ import androidx.paging.PagingState
 import com.aradevs.pokeapp.data.repository.PokemonRepository
 import com.aradevs.pokeapp.domain.Status
 import com.aradevs.pokeapp.domain.pokemon.list.Pokemon
-import com.aradevs.pokeapp.usecases.utils.FIRST_GEN_POKEMON_COUNT
-import com.aradevs.pokeapp.usecases.utils.POKEMON_PER_PAGE
-import com.aradevs.pokeapp.usecases.utils.limitFirstGenPokemon
-import com.aradevs.pokeapp.usecases.utils.setIdAndImage
+import com.aradevs.pokeapp.domain.FIRST_GEN_POKEMON_COUNT
+import com.aradevs.pokeapp.domain.POKEMON_PER_PAGE
+import com.aradevs.pokeapp.domain.limitFirstGenPokemon
+import com.aradevs.pokeapp.domain.setIdAndImage
 
 class FetchPokemonUseCase(
     private val pokemonRepository: PokemonRepository
@@ -54,7 +54,7 @@ class FetchPokemonUseCase(
 }
 
 class GetPokemonDetailUseCase(private val pokemonRepository: PokemonRepository) {
-    operator fun invoke(id: Int) = pokemonRepository.getPokemonDetail(id)
+    operator fun invoke(identifier: String) = pokemonRepository.getPokemonDetail(identifier)
 }
 
 class GetPokemonSpeciesUseCase(private val pokemonRepository: PokemonRepository) {

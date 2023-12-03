@@ -17,8 +17,8 @@ interface PokemonApi {
     ): Response<PokemonListSerializer>
 
     @GET(POKEMON_DETAIL)
-    fun getPokemonDetail(
-        @Path("id") id: Int
+    suspend fun getPokemonDetail(
+        @Path("id") identifier: String
     ): Response<PokemonDetailSerializer>
 
     @GET(POKEMON_SPECIES)

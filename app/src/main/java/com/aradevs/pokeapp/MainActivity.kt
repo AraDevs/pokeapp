@@ -9,6 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.LazyPagingItems
@@ -47,4 +48,16 @@ class MainActivity : ComponentActivity(), PokemonActions {
     @Composable
     override fun getPokemonList(): LazyPagingItems<Pokemon> =
         _viewModel.pokemonList.collectAsLazyPagingItems()
+
+    override fun getCurrentPokemonDetail() = _viewModel.currentPokemonDetail
+
+    override fun getPokemonDetail(identifier: String) {
+        _viewModel.getPokemonDetail(identifier)
+    }
+
+    override fun getFilterValue(): MutableState<String> = _viewModel.currentFilterValue
+
+    override fun updateFilterValue(newValue: String) {
+        _viewModel.updateFilterValue(newValue)
+    }
 }

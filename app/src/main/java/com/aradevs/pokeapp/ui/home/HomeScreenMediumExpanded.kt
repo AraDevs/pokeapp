@@ -27,7 +27,6 @@ import androidx.compose.ui.unit.sp
 import com.aradevs.pokeapp.MockPokemonActions
 import com.aradevs.pokeapp.PokemonActions
 import com.aradevs.pokeapp.ui.home.commons.PokemonAppBar
-import com.aradevs.pokeapp.ui.home.commons.PokemonListErrorHandler
 import com.aradevs.pokeapp.ui.home.commons.PokemonSearchBar
 import com.aradevs.pokeapp.ui.theme.AppFont
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
@@ -67,6 +66,11 @@ fun HomeScreenMediumExpanded(
             Spacer(modifier = Modifier.height(16.dp))
             PokemonSearchBar(
                 hint = "Buscar",
+                currentValue = pokemonActions.getFilterValue().value,
+                onValueChanged = { newValue -> pokemonActions.updateFilterValue(newValue) },
+                onSearch = {
+                    pokemonActions.getPokemonDetail(pokemonActions.getFilterValue().value)
+                },
                 modifier = Modifier
                     .border(1.dp, borderGray, RoundedCornerShape(30.dp))
                     .fillMaxWidth()

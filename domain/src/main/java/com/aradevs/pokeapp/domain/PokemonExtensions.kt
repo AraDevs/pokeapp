@@ -1,4 +1,4 @@
-package com.aradevs.pokeapp.usecases.utils
+package com.aradevs.pokeapp.domain
 
 import com.aradevs.pokeapp.domain.pokemon.list.Pokemon
 import java.lang.NumberFormatException
@@ -26,10 +26,17 @@ fun List<Pokemon>.setIdAndImage(): List<Pokemon> = this.map { pokemon ->
     pokemon.copy(id = pokemonId, image = obtainPokemonImage(pokemonId))
 }
 
+/*
+    This function will get the pokemon url based on the provided id
+ */
+fun obtainPokemonUrl(id: Int): String =
+    "https://pokeapi.co/api/v2/pokemon/$id/"
+
 /*this is a workaround to get the pokemon image since the api doesn't provide it when obtaining a list of pokemon, however, based on research this
   url is static and should be future proof*/
 fun obtainPokemonImage(id: Int): String =
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/$id.png"
+
 
 /*
     This function will get the pokemon id from the url provided by the api

@@ -20,16 +20,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -41,14 +36,13 @@ import com.aradevs.pokeapp.ui.theme.borderGray
 fun PokemonSearchBar(
     modifier: Modifier = Modifier,
     hint: String = "",
+    currentValue: String = "",
+    onValueChanged: (String) -> Unit = {},
     maxLines: Int = 1,
-    onSearch: (String) -> Unit = {}
+    onSearch: () -> Unit = {}
 ) {
 
     val focusManager = LocalFocusManager.current
-    var text by remember {
-        mutableStateOf(TextFieldValue(""))
-    }
 
     Card(modifier = modifier, shape = RoundedCornerShape(30.dp)) {
         Row(
@@ -61,21 +55,19 @@ fun PokemonSearchBar(
                 modifier = Modifier
                     .weight(1F)
                     .padding(horizontal = 8.dp),
-                value = text,
+                value = currentValue,
                 maxLines = maxLines,
                 singleLine = maxLines == 1,
                 textStyle = TextStyle(color = MaterialTheme.colorScheme.inverseOnSurface),
-                onValueChange = {
-                    text = it
-                },
+                onValueChange = onValueChanged,
                 keyboardActions = KeyboardActions(
                     onDone = {
-                        onSearch(text.text)
+                        onSearch()
                         focusManager.clearFocus()
                     }
                 ),
                 decorationBox = { innerTextField ->
-                    if (text.text.isEmpty()) {
+                    if (currentValue.isEmpty()) {
                         Text(hint, color = MaterialTheme.colorScheme.onSurface, fontSize = 12.sp)
                     }
                     // <-- Add this
@@ -88,7 +80,8 @@ fun PokemonSearchBar(
                     .size(27.dp),
                 shape = CircleShape,
                 onClick = {
-                    onSearch(text.text)
+                    onSearch()
+                    focusManager.clearFocus()
                 },
                 contentPadding = PaddingValues(4.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
