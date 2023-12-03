@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.drawable.toBitmap
@@ -27,6 +28,7 @@ import com.aradevs.pokeapp.domain.pokemon.detail.PokemonDetail
 import com.aradevs.pokeapp.domain.pokemon.detail.mockPokemonDetail
 import com.aradevs.pokeapp.ui.detail.dynamic.PokemonDetailDynamicBackground
 import com.aradevs.pokeapp.ui.theme.PokeappTheme
+import com.aradevs.pokeapp.utils.toStringResource
 
 @Composable
 fun PokemonDetailHeader(modifier: Modifier = Modifier, pokemonDetail: PokemonDetail) {
@@ -67,7 +69,7 @@ fun PokemonDetailHeader(modifier: Modifier = Modifier, pokemonDetail: PokemonDet
             LazyRow {
                 items(pokemonDetail.types.size) { index ->
                     PokemonDetailTypeTag(
-                        text = pokemonDetail.types[index].type.name.name
+                        text = stringResource(id = pokemonDetail.types[index].type.name.toStringResource())
                     )
                     Spacer(modifier = Modifier.width(10.dp))
                 }

@@ -32,6 +32,7 @@
     <string name="type_dark">Siniestro</string>
     <string name="type_steel">Acero</string>
     <string name="type_fairy">Hada</string>
+    <string name="type_shadow">Sombra</string>
     <string name="type_unknown">Desconocido</string>
 
 </resources>
